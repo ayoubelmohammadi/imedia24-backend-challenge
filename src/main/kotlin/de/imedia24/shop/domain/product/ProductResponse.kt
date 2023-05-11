@@ -12,10 +12,10 @@ data class ProductResponse(
 ) {
     companion object {
         fun ProductEntity.toProductResponse() = ProductResponse(
-                sku = sku,
-                name = name,
+                sku = sku ?: "",
+                name = name ?: "",
                 description = description ?: "",
-                price = price,
+                price = price ?: BigDecimal.ZERO,
                 stock = stock
         )
     }
