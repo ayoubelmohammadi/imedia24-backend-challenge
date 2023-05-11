@@ -2,8 +2,9 @@ name: Spring Boot CI
 
 on:
   push:
-    branches: [ main ]
-
+    branches: [ "master" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest
