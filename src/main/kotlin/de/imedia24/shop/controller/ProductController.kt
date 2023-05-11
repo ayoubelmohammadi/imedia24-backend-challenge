@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.websocket.server.PathParam
-import kotlin.reflect.jvm.internal.impl.resolve.constants.KClassValue
 
 @RestController
 class ProductController(private val productService: ProductService) {

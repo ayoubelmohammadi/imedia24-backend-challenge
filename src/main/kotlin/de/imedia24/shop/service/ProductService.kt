@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service
 class ProductService(private val productRepository: ProductRepository) {
 
     fun findProductBySku(sku: String): ProductResponse? {
-        return productRepository.findBySku(sku)?.toProductResponse();
+        return productRepository.findBySku(sku)?.toProductResponse()
     }
 
     fun findProductsBySkuList(skus: List<String>): List<ProductResponse> {
@@ -37,7 +37,7 @@ class ProductService(private val productRepository: ProductRepository) {
     }
 
     fun updateProduct(sku: String, productUpdateRequest: ProductUpdateRequest): ProductResponse {
-        var product = productRepository.findById(sku).orElseThrow {
+        val product = productRepository.findById(sku).orElseThrow {
             ProductNotExistsException("Product with SKU $sku not found")
         }
 
