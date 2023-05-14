@@ -3,6 +3,7 @@ package de.imedia24.shop.service
 import de.imedia24.shop.db.entity.ProductEntity
 import de.imedia24.shop.db.repository.ProductRepository
 import de.imedia24.shop.domain.product.ProductRequest
+import de.imedia24.shop.domain.product.ProductRequest.Companion.toEntity
 import de.imedia24.shop.domain.product.ProductResponse
 import de.imedia24.shop.domain.product.ProductResponse.Companion.toProductResponse
 import de.imedia24.shop.domain.product.ProductUpdateRequest
@@ -25,13 +26,7 @@ class ProductService(private val productRepository: ProductRepository) {
         if (productRepository.existsById(productRequest.sku)) {
             throw ProductAlreadyExistsException("Product with SKU ${productRequest.sku} already exists")
         }
-        val product = ProductEntity(
-                sku = productRequest.sku,
-                name = productRequest.name,
-                description = productRequest.description,
-                price = productRequest.price,
-                stock = productRequest.stock
-        )
+        val product = productRequest.toEntity()
         productRepository.save(product)
         return product.toProductResponse()
     }
